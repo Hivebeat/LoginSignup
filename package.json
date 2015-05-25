@@ -59,7 +59,6 @@
   "dependencies": {
     "bootstrap-validator": "^0.8.1",
     "browserify-shim": "^3.8.6",
-    "jquery": "^2.1.4",
-    "sweetalert": "^1.0.1"
+    "jquery": "^2.1.4"
   }
 }

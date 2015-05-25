@@ -22,12 +22,17 @@ var React = require('react'),
         },
         render: function () {
             return (
-                <p id='no-thx-txt' className={'text-center create-user-hide' + (this.props.visible ? '' : ' hidden')}><button className='btn-link' id='no-thanks-btn' onClick={this.clicked}>Nej tak,</button>{this.props.text}</p>
+                <p id='no-thx-txt' className={'text-center create-user-hide' + (this.props.visible ? '' : ' hidden')}><button className='btn-link' id='no-thanks-btn' onClick={this.clicked}>{this.props.noThx},</button>{this.props.text}</p>
             );
         }
     });
 
 module.exports = React.createClass({
+    getDefaultProps: function () {
+        return {
+            __: function (str) {return str;}
+        };
+    },
     getInitialState: function () {
         return {form: this.props.form || 'create', formVisible: false, loaderVisible: false};
     },
@@ -66,23 +71,52 @@ module.exports = React.createClass({
     },
     render: function () {
         var forms = {
-            create: <SignupForm submit={this.signup} visible={this.state.formVisible} toggleLoader={this.toggleLoader}/>,
-            login: <LoginForm submit={this.login} visible={this.state.formVisible} toggleLoader={this.toggleLoader} forgotHandler={this.showForgot}/>,
-            forgot: <ForgotForm submit={this.forgot} toggleLoader={this.toggleLoader}/>
+            create: <SignupForm
+                        __={this.props.__}
+                        submit={this.signup}
+                        visible={this.state.formVisible}
+                        toggleLoader={this.toggleLoader}/>,
+            login: <LoginForm
+                        __={this.props.__}
+                        submit={this.login}
+                        visible={this.state.formVisible}
+                        toggleLoader={this.toggleLoader}
+                        forgotHandler={this.showForgot}/>,
+            forgot: <ForgotForm
+                        __={this.props.__}
+                        submit={this.forgot}
+                        toggleLoader={this.toggleLoader}/>
         },
         noThanksBtns = {
-            create: <NoThanksBtn text='jeg vil hellere oprette min bruger uden Facebook' handleClick={this.showForm} visible={!this.state.formVisible}/>,
-            login: <NoThanksBtn text='jeg vil hellere bruge mit Greenticket login' handleClick={this.showForm} visible={!this.state.formVisible}/>
-        },
+            create: <NoThanksBtn
+                        noThx={this.props.__('No thanks')}
+                        text={this.props.__('I do not want to signup using Facebook')}
+                        handleClick={this.showForm}
+                        visible={!this.state.formVisible}/>,
+            login: <NoThanksBtn
+                        noThx={this.props.__('No thanks')}
+                        text={this.props.__('I do not want to login using Facebook')}
+                        handleClick={this.showForm}
+                        visible={!this.state.formVisible}/>
+            },
         fbLoginBtns = {
-            create: <FBLoginBtn text='Opret bruger med Facebook' toggleLoader={this.toggleLoader}/>,
-        login: <FBLoginBtn submit={this.fblogin} text='Login med Facebook' toggleLoader={this.toggleLoader}/>
+            create: <FBLoginBtn
+                        text={this.props.__('Signup using Facebook')}
+                        toggleLoader={this.toggleLoader}/>,
+            login: <FBLoginBtn
+                        submit={this.fblogin}
+                        text={this.props.__('Login using Facebook')}
+                        toggleLoader={this.toggleLoader}/>
         };
         var eventText = (this.state.form === 'create' && this.props.createEvent) ? <EventText /> : '';
         return (
             <div id='gt-create-user-modal' className='cd-user-modal is-visible'>
                 <div className='cd-user-modal-container'>
-                    <LoginSwitcher handleLoginSwitch={this.handleLoginSwitch} form={this.state.form}/>
+                    <LoginSwitcher
+                        loginTxt={this.props.__('Login')}
+                        signupTxt={this.props.__('Signup')}
+                        handleLoginSwitch={this.handleLoginSwitch}
+                        form={this.state.form}/>
                     <div id='cd-login is-visible'>
                         <br />
                         {eventText}

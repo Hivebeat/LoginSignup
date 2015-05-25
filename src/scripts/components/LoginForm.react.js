@@ -5,7 +5,7 @@ var React = require('react'),
     ForgotBtn = React.createClass({
         render: function () {
             return (
-                <button type='button' className='btn btn-link' onClick={this.props.clickHandler}>Hjælp, jeg har glemt mit password!</button>
+                <button type='button' className='btn btn-link' onClick={this.props.clickHandler}>{this.props.__('Help! I forgot my password!')}</button>
             );
         }
     });
@@ -18,23 +18,23 @@ module.exports = React.createClass({
             <form id='login-form' className={'cd-form' + (this.props.visible ? '' : ' hidden')} onSubmit={this.submit} ref='form'>
                 <p className='fieldset form-group'>
                     <label className='image-replace cd-email' htmlFor='signin-email'><i className='fa fa-envelope-o'></i></label>
-                    <input className='full-width has-padding has-border' id='signin-email' name='email' type='email' placeholder='Email' required data-error='Din email er ikke en rigtig email adresse...' ref='email'/>
+                    <input className='full-width has-padding has-border' id='signin-email' name='email' type='email' placeholder={this.props.__('Email')} required data-error={this.props.__('Your email is not valid...')} ref='email'/>
                     <span className='cd-error-message help-block with-errors hidden'></span>
                 </p>
                 <p className='fieldset form-group'>
                     <label className='image-replace cd-password' htmlFor='signin-password'><i className='fa fa-lock'></i></label>
-                    <input className='full-width has-padding has-border' id='signin-password' name='password' type='password' placeholder='Password' required data-error='Du skal indtaste et password...' ref='password'/>
+                    <input className='full-width has-padding has-border' id='signin-password' name='password' type='password' placeholder={this.props.__('Password')} required data-error={this.props.__('Please input a password..')} ref='password'/>
                     <span className='cd-error-message help-block with-errors hidden'></span>
                 </p>
                 <p className='text-center fieldset'>
                     <input type='checkbox' id='remember-me' name='rememberme' ref='rememberme'/>
-                    <label htmlFor='remember-me'>&nbsp; Husk mig</label>
+                    <label htmlFor='remember-me'>&nbsp; {this.props.__('Remember me')}</label>
                 </p>
                 <p className='fieldset form-group'>
-                    <input className='full-width' type='submit' value='Login'/>
+                    <input className='full-width' type='submit' value={this.props.__('Login')}/>
                 </p>
                 <p className='text-center'>
-                  <ForgotBtn clickHandler={this.props.forgotHandler}/>
+                  <ForgotBtn clickHandler={this.props.forgotHandler} __={this.props.__}/>
                 </p>
             </form>
         );

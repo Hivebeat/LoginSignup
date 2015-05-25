@@ -17,8 +17,8 @@ module.exports = React.createClass({
     },
     render: function () {
         this.switches = [
-            <LoginSwitch key='create-user-switch' id='create-user-switch' form='create' value='Opret bruger' handleLoginSwitch={this.handleLoginSwitch} selected={this.props.form === 'create'} number={0}/>,
-            <LoginSwitch key='login-switch' id='login-switch' form='login' value='Log ind' handleLoginSwitch={this.handleLoginSwitch} selected={this.props.form === 'login'} number={1}/>
+            <LoginSwitch key='create-user-switch' id='create-user-switch' form='create' value={this.props.signupTxt} handleLoginSwitch={this.handleLoginSwitch} selected={this.props.form === 'create'} number={0}/>,
+            <LoginSwitch key='login-switch' id='login-switch' form='login' value={this.props.loginTxt} handleLoginSwitch={this.handleLoginSwitch} selected={this.props.form === 'login'} number={1}/>
         ];
         return (
             <ul className='cd-switcher'>
