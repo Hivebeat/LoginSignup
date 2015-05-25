@@ -25,8 +25,7 @@ var bundler = watchify(browserify({
 }));
 
 gulp.task('styles', function() {
-
-    return $.rubySass('src/styles/main.scss')
+    return $.rubySass('src/styles/main.scss', {loadPath: './src/bower_components/'})
         .on('error', function(err) {
             console.error('Error!', err.message);
         })
@@ -104,7 +103,7 @@ gulp.task('watch', ['html', 'bundle'], function() {
 
     gulp.watch('src/scripts/**/*', ['scripts']);
     gulp.watch('src/*.html', ['html']);
-    gulp.watch(['src/styles/**/*.scss', 'src/styles/**/*.css'], ['styles', reload]);
+    gulp.watch(['src/styles/**/*.scss'], ['styles', reload]);
     gulp.watch('src/images/**/*', reload);
 });
 

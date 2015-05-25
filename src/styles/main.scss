@@ -1,6 +1,5 @@
-@import '../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap';
-@import '../bower_components/font-awesome/scss/font-awesome';
-@import '../../node_modules/sweetalert/dev/sweetalert';
+@import 'bootstrap-sass-official/assets/stylesheets/_bootstrap';
+@import 'font-awesome/scss/font-awesome';
 
 /* --------------------------------
 
@@ -23,8 +22,8 @@ xsigin/signup popup
 
 .cd-switcher li{
     list-style-type: none;
+    cursor: pointer;    
 }
-
 
 .cd-user-modal {
   position: fixed;
@@ -339,6 +338,15 @@ xsigin/signup popup
 
 #cd-login.is-selected, #cd-signup.is-selected, #cd-reset-password.is-selected {
   display: block;
+}
+
+.form-group.has-error {
+  >input {
+      border: 1px solid #d76666;
+      &:hover {
+          border: 1px solid #d76666;
+      }
+  }
 }
 
 .spinner {
