@@ -1,7 +1,6 @@
 'use strict';
 var $ = require('jquery'),
     React = require('react'),
-    swal = require('sweetalert'),
     _gaq = window._gaq || undefined,
     FB = window.FB || undefined;
 module.exports = React.createClass({

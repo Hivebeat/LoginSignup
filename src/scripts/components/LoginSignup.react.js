@@ -2,7 +2,6 @@
 
 var React = require('react'),
     $ = require('jquery'),
-    swal = require('sweetalert'),
     validator = require('bootstrap-validator'),
     SignupForm = require('./SignupForm.react'),
     LoginForm = require('./LoginForm.react'),
