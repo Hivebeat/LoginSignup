@@ -30,7 +30,7 @@ module.exports = React.createClass({
                     <input type='checkbox' id='remember-me' name='rememberme' ref='rememberme'/>
                     <label htmlFor='remember-me'>&nbsp; {this.props.__('Remember me')}</label>
                 </p>
-                <p className='fieldset form-group'>
+                <p className='fieldset form-group text-center'>
                     <input className='full-width' type='submit' value={this.props.__('Login')}/>
                 </p>
                 <p className='text-center'>

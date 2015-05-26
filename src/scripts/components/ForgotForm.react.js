@@ -20,7 +20,7 @@ module.exports = React.createClass({
                         <input className='full-width has-padding has-border' id='forgot-email' name='email' type='email' placeholder={this.props.__('Email')} required data-error={this.props.__('Your email is not valid...')} ref='email'/>
                         <span className='cd-error-message help-block with-errors hidden'></span>
                     </p>
-                    <p className='fieldset form-group'>
+                    <p className='fieldset form-group text-center'>
                         <input className='full-width' type='submit' value={this.props.__('Send me an email!')}/>
                     </p>
                 </form>

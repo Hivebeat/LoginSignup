@@ -32,6 +32,7 @@ module.exports = React.createClass({
         login: React.PropTypes.func.isRequired,
         forgot: React.PropTypes.func.isRequired,
         fblogin: React.PropTypes.func.isRequired,
+        dismissModal: React.PropTypes.func.isRequired,
         __: React.PropTypes.func,
         isVisible: React.PropTypes.bool
     },
@@ -64,6 +65,11 @@ module.exports = React.createClass({
         var state = this.state;
         state.form = 'forgot';
         this.setState(state);
+    },
+    clicked: function (e) {
+        if(e.target === e.currentTarget) {
+            this.props.dismissModal();
+        }
     },
     render: function () {
         var forms = {
@@ -106,7 +112,7 @@ module.exports = React.createClass({
         };
         var eventText = (this.state.form === 'create' && this.props.createEvent) ? <EventText /> : '';
         return (
-            <div id='gt-create-user-modal' className={'cd-user-modal ' + (this.props.isVisible ? 'is-visible' : '')}>
+            <div id='gt-create-user-modal' className={'cd-user-modal ' + (this.props.isVisible ? 'is-visible' : '')} onClick={this.clicked}>
                 <div className='cd-user-modal-container'>
                     <LoginSwitcher
                         loginTxt={this.props.__('Login')}
