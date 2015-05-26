@@ -32,7 +32,8 @@ module.exports = React.createClass({
         login: React.PropTypes.func.isRequired,
         forgot: React.PropTypes.func.isRequired,
         fblogin: React.PropTypes.func.isRequired,
-        __: React.PropTypes.func
+        __: React.PropTypes.func,
+        isVisible: React.PropTypes.bool
     },
 
     getDefaultProps: function () {
@@ -41,7 +42,7 @@ module.exports = React.createClass({
         };
     },
     getInitialState: function () {
-        return {form: this.props.form || 'create', formVisible: false, loaderVisible: false, isVisible: false};
+        return {form: this.props.form || 'create', formVisible: false, loaderVisible: false, isVisible: this.props.isVisible || false};
     },
     handleLoginSwitch: function (form) {
         var state = this.state;
