@@ -42,7 +42,7 @@ module.exports = React.createClass({
         };
     },
     getInitialState: function () {
-        return {form: this.props.form || 'create', formVisible: false, loaderVisible: false, isVisible: this.props.isVisible || false};
+        return {form: this.props.form || 'create', formVisible: false, loaderVisible: false};
     },
     handleLoginSwitch: function (form) {
         var state = this.state;
@@ -106,7 +106,7 @@ module.exports = React.createClass({
         };
         var eventText = (this.state.form === 'create' && this.props.createEvent) ? <EventText /> : '';
         return (
-            <div id='gt-create-user-modal' className={'cd-user-modal' + (this.state.isVisible ? 'is-visible' : '')}>
+            <div id='gt-create-user-modal' className={'cd-user-modal' + (this.props.isVisible ? 'is-visible' : '')}>
                 <div className='cd-user-modal-container'>
                     <LoginSwitcher
                         loginTxt={this.props.__('Login')}
