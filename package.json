@@ -63,7 +63,6 @@
   "dependencies": {
     "bootstrap-validator": "^0.8.1",
     "browserify-shim": "^3.8.6",
-    "hb-login-signup": "git+ssh://git@bitbucket.org:Greenticket/loginsignup.git",
     "jquery": "^2.1.4"
   }
 }
