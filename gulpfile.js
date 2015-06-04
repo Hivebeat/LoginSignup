@@ -8,6 +8,7 @@ var browserSync = require('browser-sync');
 var reactify = require('reactify');
 var minifyCss = require('gulp-minify-css');
 var rev = require('gulp-rev');
+var rename = require('gulp-rename');
 var sourceFile = './src/scripts/app.js';
 var destFolder = './dist/scripts';
 var destFileName = 'app.js';
@@ -29,6 +30,8 @@ gulp.task('styles', function() {
         .on('error', function(err) {
             console.error('Error!', err.message);
         })
+        .pipe(gulp.dest('src/styles'))
+        .pipe(rename('_importme.scss'))
         .pipe(gulp.dest('src/styles'));
 });
 
