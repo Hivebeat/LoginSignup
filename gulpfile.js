@@ -9,6 +9,8 @@ var reactify = require('reactify');
 var minifyCss = require('gulp-minify-css');
 var rev = require('gulp-rev');
 var rename = require('gulp-rename');
+var react = require('gulp-react');
+var sourcemaps = require('gulp-sourcemaps');
 var sourceFile = './src/scripts/app.js';
 var destFolder = './dist/scripts';
 var destFileName = 'app.js';
@@ -111,11 +113,12 @@ gulp.task('watch', ['html', 'bundle'], function() {
 });
 
 
-gulp.task('build', ['html', 'buildBundle', 'images', 'fonts', 'extras'], function() {
-    gulp.src('dist/scripts/app.js')
-        .pipe($.uglify())
-        .pipe($.stripDebug())
-        .pipe(gulp.dest('dist/scripts'));
+gulp.task('build', ['build-styles'], function() {
+    return gulp.src('src/scripts/**/*')
+//        .pipe(sourcemaps.init())
+  //      .pipe(react())
+//        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('dist'));
 });
 
 gulp.task('default', ['clean', 'build', 'jest']);
