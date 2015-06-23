@@ -1,1 +1,1 @@
-module.exports = require('./src/scripts/components/LoginSignup.react');
+module.exports = require('./dist/LoginSignup.react.js');
