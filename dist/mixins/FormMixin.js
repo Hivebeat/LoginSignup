@@ -16,7 +16,9 @@ module.exports = {
         e.preventDefault();
         var valid = true;
         var data = {};
-        this.$form.validator('validate');
+        if (typeof this.$form.validator !== 'undefined') {
+          this.$form.validator('validate');
+        }
         this.$form.find('.help-block').each(function(index, element) {
             var $element = $(element);
             if ($element.children().length > 0) {
@@ -31,7 +33,7 @@ module.exports = {
                     if (ref.type === 'checkbox') {
                         data[key] = $(ref).is(':checked');
                     } else {
-                        data[key] = $(ref).val();    
+                        data[key] = $(ref).val();
                     }
                 }
             }
