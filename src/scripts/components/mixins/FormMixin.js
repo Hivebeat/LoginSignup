@@ -3,7 +3,9 @@ var $ = require('jquery');
 module.exports = {
     componentDidMount: function() {
         this.$form = $('#' + this.refs.form.getDOMNode().id);
-        this.$form.validator();
+        if (typeof this.$form.validator !== 'undefined') {
+          this.$form.validator();
+        }
         $(document).on('valid.bs.validator', function(e) {
             var helpBlock = $(e.relatedTarget).next();
             if (helpBlock.hasClass('help-block')) {
