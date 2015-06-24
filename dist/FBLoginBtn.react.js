@@ -1,8 +1,12 @@
 'use strict';
 var $ = require('jquery'),
-    React = require('react'),
-    _gaq = window._gaq || undefined,
-    FB = window.FB || undefined;
+    React = require('react');
+
+if (typeof window !== 'undefined') {
+  var _gaq = window._gaq || undefined;
+  var FB = window.FB || undefined;
+}
+
 module.exports = React.createClass({displayName: "exports",
     click: function () {
         if (_gaq !== undefined) {

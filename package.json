@@ -8,7 +8,8 @@
     "example": "example"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "jsx src/scripts/components dist"
   },
   "browser": {
     "bootstrap-validator": "./node_modules/bootstrap-validator/js/validator.js"
