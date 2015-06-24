@@ -7,11 +7,13 @@ var React = require('react'),
     ForgotForm = require('./ForgotForm.react'),
     LoginSwitcher = require('./LoginSwitcher.react'),
     EventText = require('./EventText.react'),
-    FBLoginBtn = require('./FBLoginBtn.react'),
+    FBLoginBtn = require('./FBLoginBtn.react');
 
-    _gaq = window._gaq || undefined,
+if (typeof window !== 'undefined') {
+  var _gaq = window._gaq || undefined;
+}
 
-    NoThanksBtn = React.createClass({
+var NoThanksBtn = React.createClass({
         clicked: function () {
             if (_gaq !== undefined) {
                 _gaq.push(['_trackEvent', 'LoginModal', 'no-fb', window.location.pathname]);
