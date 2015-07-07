@@ -4,7 +4,6 @@ var $ = require('jquery'),
 
 if (typeof window !== 'undefined') {
   var _gaq = window._gaq || undefined;
-  var FB = window.FB || undefined;
 }
 
 module.exports = React.createClass({
@@ -12,17 +11,11 @@ module.exports = React.createClass({
         if (_gaq !== undefined) {
             _gaq.push(['_trackEvent', 'LoginModal', 'fblogin', window.location.pathname]);
         }
-        if (!FB) {
+        if (!window.FB) {
             throw 'FB is not defined! Please load the Facebook SDK';
         }
+        var FB = window.FB;
         this.props.toggleLoader();
-        FB.init({
-            appId       : '251682631638868',
-            status      : true,
-            cookie      : true,
-            fileUpload  : true,
-            version     : 'v2.1'
-        });
         FB.login(function(resp){
             this.props.callback(resp);
         }.bind(this), {scope: this.props.scope});
