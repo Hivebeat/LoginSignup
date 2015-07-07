@@ -115,10 +115,11 @@ module.exports = React.createClass({displayName: "exports",
             },
         fbLoginBtns = {
             create: React.createElement(FBLoginBtn, {
+                        callback: this.props.fblogin, 
                         text: this.props.__('Signup using Facebook'), 
                         toggleLoader: this.toggleLoader}),
             login: React.createElement(FBLoginBtn, {
-                        submit: this.props.fblogin, 
+                        callback: this.props.fblogin, 
                         text: this.props.__('Login using Facebook'), 
                         toggleLoader: this.toggleLoader})
         };
