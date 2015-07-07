@@ -115,10 +115,12 @@ module.exports = React.createClass({
             },
         fbLoginBtns = {
             create: <FBLoginBtn
+                        scope={this.props.fbloginscope}
                         callback={this.props.fblogin}
                         text={this.props.__('Signup using Facebook')}
                         toggleLoader={this.toggleLoader}/>,
             login: <FBLoginBtn
+                        scope={this.props.fbloginscope}
                         callback={this.props.fblogin}
                         text={this.props.__('Login using Facebook')}
                         toggleLoader={this.toggleLoader}/>
