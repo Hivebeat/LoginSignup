@@ -16,13 +16,6 @@ module.exports = React.createClass({
         }
         var FB = window.FB;
         this.props.toggleLoader();
-        FB.init({
-            appId       : '251682631638868',
-            status      : true,
-            cookie      : true,
-            fileUpload  : true,
-            version     : 'v2.1'
-        });
         FB.login(function(resp){
             this.props.callback(resp);
         }.bind(this), {scope: this.props.scope});
