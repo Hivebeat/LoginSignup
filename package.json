@@ -1,6 +1,6 @@
 {
   "name": "hb-login-signup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "directories": {
@@ -27,8 +27,8 @@
       "reactify"
     ]
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Emil Hagbarth",
+  "license": "MIT",
   "devDependencies": {
     "browser-sync": "latest",
     "browserify-shim": "^3.8.0",
@@ -66,5 +66,6 @@
   "dependencies": {
     "browserify-shim": "^3.8.6",
     "jquery": "^2.1.4"
-  }
+  },
+  "repository": "https://github.com/Hivebeat/LoginSignup.git"
 }
