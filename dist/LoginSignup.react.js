@@ -33,15 +33,9 @@ module.exports = React.createClass({displayName: "exports",
         login: React.PropTypes.func.isRequired,
         forgot: React.PropTypes.func.isRequired,
         fblogin: React.PropTypes.func.isRequired,
-        triggerId: React.PropTypes.string.isRequired,
-        __: React.PropTypes.func
+        triggerId: React.PropTypes.string.isRequired
     },
 
-    getDefaultProps: function () {
-        return {
-            __: function (str) {return this.props.messages[str] || str;}
-        };
-    },
     getInitialState: function () {
         return {
             form: 'create',
@@ -89,32 +83,36 @@ module.exports = React.createClass({displayName: "exports",
         }
     },
     render: function () {
+        var __ = function (str) {
+            return this.props.messages[str] || str;
+        }.bind(this);
+
         var forms = {
             create: React.createElement(SignupForm, {
-                        __: this.props.__, 
+                        __: __, 
                         submit: this.props.signup, 
                         visible: this.state.formVisible, 
                         toggleLoader: this.toggleLoader}),
             login: React.createElement(LoginForm, {
-                        __: this.props.__, 
+                        __: __, 
                         submit: this.props.login, 
                         visible: this.state.formVisible, 
                         toggleLoader: this.toggleLoader, 
                         forgotHandler: this.showForgot}),
             forgot: React.createElement(ForgotForm, {
-                        __: this.props.__, 
+                        __: __, 
                         submit: this.props.forgot, 
                         toggleLoader: this.toggleLoader})
         },
         noThanksBtns = {
             create: React.createElement(NoThanksBtn, {
-                        noThx: this.props.__('No thanks'), 
-                        text: this.props.__('I do not want to signup using Facebook'), 
+                        noThx: __('No thanks'), 
+                        text: __('I do not want to signup using Facebook'), 
                         handleClick: this.showForm, 
                         visible: !this.state.formVisible}),
             login: React.createElement(NoThanksBtn, {
-                        noThx: this.props.__('No thanks'), 
-                        text: this.props.__('I do not want to login using Facebook'), 
+                        noThx: __('No thanks'), 
+                        text: __('I do not want to login using Facebook'), 
                         handleClick: this.showForm, 
                         visible: !this.state.formVisible})
             },
@@ -122,12 +120,12 @@ module.exports = React.createClass({displayName: "exports",
             create: React.createElement(FBLoginBtn, {
                         scope: this.props.fbloginscope, 
                         callback: this.props.fblogin, 
-                        text: this.props.__('Signup using Facebook'), 
+                        text: __('Signup using Facebook'), 
                         toggleLoader: this.toggleLoader}),
             login: React.createElement(FBLoginBtn, {
                         scope: this.props.fbloginscope, 
                         callback: this.props.fblogin, 
-                        text: this.props.__('Login using Facebook'), 
+                        text: __('Login using Facebook'), 
                         toggleLoader: this.toggleLoader})
         };
         var eventText = (this.state.form === 'create' && this.props.createEvent) ? React.createElement(EventText, null) : '';
@@ -135,8 +133,8 @@ module.exports = React.createClass({displayName: "exports",
             React.createElement("div", {id: "gt-create-user-modal", className: 'cd-user-modal ' + (this.state.isVisible ? 'is-visible' : ''), onClick: this.clicked}, 
                 React.createElement("div", {className: "cd-user-modal-container"}, 
                     React.createElement(LoginSwitcher, {
-                        loginTxt: this.props.__('Login'), 
-                        signupTxt: this.props.__('Signup'), 
+                        loginTxt: __('Login'), 
+                        signupTxt: __('Signup'), 
                         handleLoginSwitch: this.handleLoginSwitch, 
                         form: this.state.form}), 
                     React.createElement("div", {id: "cd-login is-visible"}, 
