@@ -39,7 +39,7 @@ module.exports = React.createClass({
 
     getDefaultProps: function () {
         return {
-            __: function (str) {return str;}
+            __: function (str) {return this.props.messages[str] || str;}
         };
     },
     getInitialState: function () {
@@ -51,6 +51,11 @@ module.exports = React.createClass({
         };
     },
     componentDidMount: function () {
+        if (this.props.form !== this.state.form) {
+            this.setState({
+                form: this.props.form
+            });
+        }
         $('#'+this.props.triggerId).click(function () {
             this.setState({
                 isVisible: true
