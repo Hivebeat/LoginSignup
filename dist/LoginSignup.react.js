@@ -84,6 +84,9 @@ module.exports = React.createClass({displayName: "exports",
     },
     render: function () {
         var __ = function (str) {
+            if(!this.props.messages) {
+                return str;
+            }
             return this.props.messages[str] || str;
         }.bind(this);
 
