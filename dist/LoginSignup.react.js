@@ -50,6 +50,11 @@ module.exports = React.createClass({displayName: "exports",
                 form: this.props.form
             });
         }
+        if (this.props.isVisible) {
+          this.setState({
+            isVisible: this.props.isVisible
+          });
+        }
         $('#'+this.props.triggerId).click(function () {
             this.setState({
                 isVisible: true
@@ -83,11 +88,6 @@ module.exports = React.createClass({displayName: "exports",
         }
     },
     render: function () {
-        if (this.props.isVisible) {
-          this.setState({
-            isVisible: this.props.isVisible
-          });
-        }
       
         var __ = function (str) {
             if(!this.props.messages) {
