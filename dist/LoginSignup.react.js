@@ -83,6 +83,12 @@ module.exports = React.createClass({displayName: "exports",
         }
     },
     render: function () {
+        if (this.props.isVisible) {
+          this.setState({
+            isVisible: this.props.isVisible
+          });
+        }
+      
         var __ = function (str) {
             if(!this.props.messages) {
                 return str;
