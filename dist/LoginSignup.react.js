@@ -54,7 +54,7 @@ module.exports = React.createClass({displayName: "exports",
             isVisible: this.props.isVisible
           });
         }
-        if (typeof this.props.triggerId === 'Array') {
+        if( Object.prototype.toString.call( someVar ) === '[object Array]' ) {  
           for(var i = 0; i < this.props.triggerId.length; i++) {
             var triggerId = this.props.triggerId[i];
             $('#'+triggerId).click(function () {
