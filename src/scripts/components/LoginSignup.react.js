@@ -32,8 +32,7 @@ module.exports = React.createClass({
         signup: React.PropTypes.func.isRequired,
         login: React.PropTypes.func.isRequired,
         forgot: React.PropTypes.func.isRequired,
-        fblogin: React.PropTypes.func.isRequired,
-        triggerId: React.PropTypes.string.isRequired
+        fblogin: React.PropTypes.func.isRequired
     },
 
     getInitialState: function () {
@@ -55,11 +54,22 @@ module.exports = React.createClass({
             isVisible: this.props.isVisible
           });
         }
-        $('#'+this.props.triggerId).click(function () {
-            this.setState({
-                isVisible: true
-            });
-        }.bind(this));
+        if (typeof this.props.triggerId === 'Array') {
+          for(var i = 0; i < this.props.triggerId.length; i++) {
+            var triggerId = this.props.triggerId[i];
+            $('#'+triggerId).click(function () {
+                this.setState({
+                    isVisible: true
+                });
+            }.bind(this));
+          }
+        } else {
+          $('#'+this.props.triggerId).click(function () {
+              this.setState({
+                  isVisible: true
+              });
+          }.bind(this));
+        }
     },
     handleLoginSwitch: function (form) {
         var state = this.state;
